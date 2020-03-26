@@ -166,7 +166,7 @@ def draw(body):
 	draw_snack(screen,body)
 	clock.tick(FPS)
 	pygame.display.flip()
-	time.sleep(0.2)	
+	#time.sleep(0.5)	
 GREY=(111,111,111)
 WHITE=(255,255,255)
 RED=(255,0,0)
@@ -180,7 +180,7 @@ def rand_food():
 	global food_pos
 	av_li=[]
 	for each in point_dic.keys():
-		if each not in body:
+		if each not in body and each not in wall_lis:
 			av_li.append(each)
 	if len(av_li)==0:
 		food_pos=(-1,-1)
@@ -197,7 +197,6 @@ if __name__ == "__main__":
 	FPS=30
 	clock = pygame.time.Clock()
 	find()
-	time.sleep(3)
 	rand_food()
 	head=point_dic[(0,1)]
 	body.append(((0,0),(0,1)))
