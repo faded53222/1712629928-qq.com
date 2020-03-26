@@ -180,10 +180,17 @@ def rand_food():
 	global food_pos
 	av_li=[]
 	for each in point_dic.keys():
-		if each not in body and each not in wall_lis:
-			av_li.append(each)
+		if each not in wall_lis:
+			labb=0
+			for each2 in body:
+				if each==each2[0] or each==each2[1]:
+					labb=1
+					break
+			if labb==0:
+				av_li.append(each)
 	if len(av_li)==0:
 		food_pos=(-1,-1)
+		return
 	food_pos=random.choice(av_li)
 body=[]		
 if __name__ == "__main__":
